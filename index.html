@@ -158,10 +158,11 @@
         class="page section-home"
       >
         <div id="video-container">
-          <iframe 
-            src="https://www.youtube.com/embed/amqmeg7_cfg?autoplay=1&mute=1&loop=1&controls=0&playlist=amqmeg7_cfg&modestbranding=1&showinfo=0&rel=0"
+          <iframe id="youtube-video"
+            src="https://www.youtube.com/embed/amqmeg7_cfg?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&enablejsapi=1"
             frameborder="0"
             allow="autoplay; fullscreen"
+            allowfullscreen
             style="position: absolute; top: 0; left: 0; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.78vh; object-fit: cover; z-index: -1;">
           </iframe>
         </div>
@@ -1197,5 +1198,20 @@
         mute: false,
       });
     </script>
+    <script>
+      function onYouTubeIframeAPIReady() {
+          var player = new YT.Player('youtube-video', {
+              events: {
+                  'onStateChange': function(event) {
+                      if (event.data === YT.PlayerState.ENDED) {
+                          player.seekTo(0);
+                          player.playVideo();
+                      }
+                  }
+              }
+          });
+      }
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
   </body>
 </html>
