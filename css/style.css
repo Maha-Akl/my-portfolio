@@ -1694,18 +1694,30 @@ header .menu-button.menu-button--open span:nth-child(3) {
 }
 
 .section-portfolio .portfolio-items .item figure figcaption i {
-  position: absolute;
   left: 0px;
   -webkit-transform: translateX(-200%);
   -ms-transform: translateX(-200%);
   transform: translateX(-200%);
-  margin: 18px;
   font-size: 24px;
   opacity: 0;
-  bottom: 0;
   -webkit-transition: all 0.35s;
   -o-transition: all 0.35s;
   transition: all 0.35s;
+  padding-right: 10px;
+}
+
+.section-resume .experience p strong {
+  font-weight: bold;
+}
+.blog-signature {
+  padding-top: 10px;
+
+}
+.blog-signature p {
+  font-size: 14px;
+  color: #a1a1a1;
+  margin-bottom: 10px;
+
 }
 
 .section-portfolio .portfolio-items .item figure:hover img {
