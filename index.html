@@ -157,15 +157,16 @@
         id="home"
         class="page section-home"
       >
-        <div id="video-container">
-          <iframe id="youtube-video"
-            src="https://www.youtube.com/embed/amqmeg7_cfg?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&enablejsapi=1&playsinline=1"
+        <div style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; overflow: hidden;">
+          <iframe src="https://player.vimeo.com/video/1056851166?background=1&autoplay=1&loop=1&muted=1"
             frameborder="0"
-            allow="autoplay; fullscreen; encrypted-media"
+            allow="autoplay; fullscreen"
             allowfullscreen
             style="position: absolute; top: 0; left: 0; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.78vh; z-index: -1;">
           </iframe>
         </div>
+      
+      
 
         <div class="banner-text">
           <div class="profile-img">
@@ -1154,26 +1155,17 @@
     <script src="js/plugins.min.js"></script>
     <!--Site Main JS-->
     <script src="js/main.js"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-      var player;
-
-      function onYouTubeIframeAPIReady() {
-          player = new YT.Player('youtube-video', {
-              events: {
-                  'onReady': function(event) {
-                      event.target.mute(); // Mute to ensure autoplay works
-                      event.target.playVideo();
-                  },
-                  'onStateChange': function(event) {
-                      if (event.data === YT.PlayerState.ENDED) {
-                          player.seekTo(0);
-                          player.playVideo();
-                      }
-                  }
-              }
-          });
-      }
-    </script>
-    <script src="https://www.youtube.com/iframe_api"></script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var iframe = document.querySelector("iframe");
+        var player = new Vimeo.Player(iframe);
+    
+        player.setVolume(0); // Ensure it's muted
+        player.play().catch(function(error) {
+          console.error("Autoplay blocked: ", error);
+        });
+      });
+    </script>    
   </body>
 </html>
