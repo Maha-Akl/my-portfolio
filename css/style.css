@@ -2413,3 +2413,15 @@ header .back-button i {
     transform: translateX(-50%) translateY(-20px) scale(1.2);
   }
 }
+
+@media (max-width: 768px) {
+  #video-container iframe {
+    position: absolute;
+    top: 0;
+    left: -89%!important; /* Move video slightly to the left */
+    width: 120vw!important; /* Expand width to cover any gaps */
+    height: 100vh!important;
+    object-fit: cover;
+  }
+}
+
